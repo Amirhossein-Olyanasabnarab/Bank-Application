@@ -5,6 +5,7 @@ import com.bank.model.LegalCustomer;
 import com.bank.model.RealCustomer;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Bank implements AutoCloseable {
@@ -38,10 +39,27 @@ public class Bank implements AutoCloseable {
                 case 5:
                     searchAndEditCustomerByName();
                     break;
+                case 6:
+                    searchAndDeleteCustomerByName();
+                    break;
                 default:
                     System.out.println("Invalid choice");
             }
         } while (choice != 0);
+    }
+
+    private void searchAndDeleteCustomerByName() {
+        System.out.println("Enter your customer name:");
+        String name = scanner.nextLine();
+        List<Customer> customerToDelete = new ArrayList<>();
+        for (Customer customer : customers) {
+            if(customer.getName().equalsIgnoreCase(name)){
+                customerToDelete.add(customer);
+            }
+        }
+        if(!customerToDelete.isEmpty()){
+            customers.removeAll(customerToDelete);
+        }
     }
 
     private void searchAndEditCustomerByName() {
@@ -56,11 +74,11 @@ public class Bank implements AutoCloseable {
                 String phone = scanner.nextLine();
                 customer.setName(newName);
                 customer.setPhoneNumber(phone);
-                if (customer instanceof RealCustomer realCustomer){
+                if (customer instanceof RealCustomer realCustomer) {
                     System.out.println("Enter your new customer family:");
                     String family = scanner.nextLine();
                     realCustomer.setFamily(family);
-                }else if (customer instanceof LegalCustomer legalCustomer){
+                } else if (customer instanceof LegalCustomer legalCustomer) {
                     System.out.println("Enter your new customer fax:");
                     String fax = scanner.nextLine();
                     legalCustomer.setFax(fax);
@@ -74,9 +92,10 @@ public class Bank implements AutoCloseable {
         System.out.println("0 - Exit");
         System.out.println("1 - Add new customer");
         System.out.println("2 - Print all customer");
-        System.out.println("3 - Search and print customer by name");
-        System.out.println("4 - Search and print customer by family");
-        System.out.println("4 - Search and edit customer by name");
+        System.out.println("3 - Search and print customers by name");
+        System.out.println("4 - Search and print customers by family");
+        System.out.println("5 - Search and edit customer by name");
+        System.out.println("6 - Search and delete customers by name");
     }
 
     private void addNewCustomer() {
