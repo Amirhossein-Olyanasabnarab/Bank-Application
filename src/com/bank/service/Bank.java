@@ -24,13 +24,13 @@ public class Bank implements AutoCloseable{
                     System.out.println("Exit . . .");
                     break;
                 case 1:
-                    addNewCostumer();
+                    addNewCustomer();
                     break;
                 case 2:
                     printCustomer();
                     break;
                 case 3:
-                    System.out.println("Search and print customers by name");
+                    searchAndPrintCustomers();
                     break;
                 case 4:
                     System.out.println("Search and print customers by family");
@@ -49,7 +49,7 @@ public class Bank implements AutoCloseable{
         System.out.println("4 - Search and print customer by family");
     }
 
-    private void addNewCostumer() {
+    private void addNewCustomer() {
         System.out.println("***********************");
         System.out.println("1 - Real Customer");
         System.out.println("2 - Legal Customer");
@@ -91,8 +91,18 @@ public class Bank implements AutoCloseable{
         }
     }
 
-    private void searchAndPrintCostumers() {
+    private void searchAndPrintCustomers() {
         System.out.println("Please enter name for searching by customer name");
+        String name = scanner.nextLine();
+        if(customers.isEmpty()){
+            System.out.println("No customer found");
+        }else {
+            for (Customer customer : customers) {
+                if(customer.getName().equalsIgnoreCase(name)){
+                    System.out.println(customer);
+                }
+            }
+        }
     }
     @Override
     public void close()  {
