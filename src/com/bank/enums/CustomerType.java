@@ -1,6 +1,6 @@
 package com.bank.enums;
 
-public enum CostumerType {
+public enum CustomerType {
     REAL,
     LEGAL
 }

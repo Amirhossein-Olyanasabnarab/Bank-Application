@@ -1,15 +1,15 @@
 package com.bank.service;
 
-import com.bank.model.Costumer;
-import com.bank.model.LegalCostumer;
-import com.bank.model.RealCostumer;
+import com.bank.model.Customer;
+import com.bank.model.LegalCustomer;
+import com.bank.model.RealCustomer;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Bank implements AutoCloseable{
 
-    private ArrayList<Costumer> costumers = new ArrayList<>();
+    private ArrayList<Customer> customers = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
 
     public void run() {
@@ -27,13 +27,13 @@ public class Bank implements AutoCloseable{
                     addNewCostumer();
                     break;
                 case 2:
-                    printCostumers();
+                    printCustomer();
                     break;
                 case 3:
-                    System.out.println("Search and print costumers by name");
+                    System.out.println("Search and print customers by name");
                     break;
                 case 4:
-                    System.out.println("Search and print costumers by family");
+                    System.out.println("Search and print customers by family");
                     break;
                 default:
                     System.out.println("Invalid choice");
@@ -43,54 +43,57 @@ public class Bank implements AutoCloseable{
 
     private void printMenu() {
         System.out.println("0 - Exit");
-        System.out.println("1 - Add new costumer");
-        System.out.println("2 - Print all costumers");
-        System.out.println("3 - Search and print costumer by name");
-        System.out.println("4 - Search and print costumer by family");
+        System.out.println("1 - Add new customer");
+        System.out.println("2 - Print all customer");
+        System.out.println("3 - Search and print customer by name");
+        System.out.println("4 - Search and print customer by family");
     }
 
     private void addNewCostumer() {
         System.out.println("***********************");
-        System.out.println("1 - Real Costumer");
-        System.out.println("2 - Legal Costumer");
-        System.out.println("Please choose a costumer type:");
+        System.out.println("1 - Real Customer");
+        System.out.println("2 - Legal Customer");
+        System.out.println("Please choose a customer type:");
         int choice = scanner.nextInt();
         scanner.nextLine();
         if (choice == 1) {
-            System.out.println("Enter costumer name:");
+            System.out.println("Enter customer name:");
             String name = scanner.nextLine();
-            System.out.println("Enter costumer family:");
+            System.out.println("Enter customer family:");
             String family = scanner.nextLine();
-            System.out.println("Enter costumer phone number:");
+            System.out.println("Enter customer phone number:");
             String phone = scanner.nextLine();
-            RealCostumer realCostumer = new RealCostumer(name, phone);
-            realCostumer.setFamily(family);
-            costumers.add(realCostumer);
+            RealCustomer realCustomer = new RealCustomer(name, phone);
+            realCustomer.setFamily(family);
+            customers.add(realCustomer);
         } else if (choice == 2) {
-            System.out.println("Enter costumer name:");
+            System.out.println("Enter customer name:");
             String name = scanner.nextLine();
-            System.out.println("Enter costumer phone number:");
+            System.out.println("Enter customer phone number:");
             String phone = scanner.nextLine();
-            System.out.println("Enter costumer fax:");
+            System.out.println("Enter customer fax:");
             String fax = scanner.nextLine();
-            LegalCostumer legalCostumer = new LegalCostumer(name, phone);
-            legalCostumer.setFax(fax);
-            costumers.add(legalCostumer);
+            LegalCustomer legalCustomer = new LegalCustomer(name, phone);
+            legalCustomer.setFax(fax);
+            customers.add(legalCustomer);
         } else {
             System.out.println("Invalid choice . . . ");
         }
     }
 
-    private void printCostumers() {
-        if (costumers.isEmpty()) {
-            System.out.println("No costumers found");
+    private void printCustomer() {
+        if (customers.isEmpty()) {
+            System.out.println("No customer found");
         } else {
-            for (Costumer costumer : costumers) {
-                System.out.println(costumer);
+            for (Customer customer : customers) {
+                System.out.println(customer);
             }
         }
     }
 
+    private void searchAndPrintCostumers() {
+        System.out.println("Please enter name for searching by customer name");
+    }
     @Override
     public void close()  {
         scanner.close();

@@ -1,13 +1,13 @@
 package com.bank.model;
 
-import com.bank.enums.CostumerType;
+import com.bank.enums.CustomerType;
 
-public abstract class Costumer {
+public abstract class Customer {
     private String name;
     private String phoneNumber;
-    private CostumerType type;
+    private CustomerType type;
 
-    public Costumer(String name, String phoneNumber, CostumerType type) {
+    public Customer(String name, String phoneNumber, CustomerType type) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.type = type;
@@ -38,7 +38,7 @@ public abstract class Costumer {
         this.phoneNumber = phoneNumber;
     }
 
-    public CostumerType getType() {
+    public CustomerType getType() {
         return type;
     }
 }

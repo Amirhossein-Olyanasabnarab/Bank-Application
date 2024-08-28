@@ -1,8 +1,8 @@
 package com.bank.model;
 
-import com.bank.enums.CostumerType;
+import com.bank.enums.CustomerType;
 
-public class RealCostumer extends Costumer{
+public class RealCustomer extends Customer {
     private String family;
 
     public String getFamily() {
@@ -13,7 +13,7 @@ public class RealCostumer extends Costumer{
         this.family = family;
     }
 
-    public RealCostumer(String name, String phoneNumber) {
-        super(name, phoneNumber, CostumerType.REAL);
+    public RealCustomer(String name, String phoneNumber) {
+        super(name, phoneNumber, CustomerType.REAL);
     }
 }
