@@ -16,4 +16,12 @@ public class RealCustomer extends Customer {
     public RealCustomer(String name, String phoneNumber) {
         super(name, phoneNumber, CustomerType.REAL);
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                super.toString() +
+                " family='" + family + '\'' +
+                '}';
+    }
 }

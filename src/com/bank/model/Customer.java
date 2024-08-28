@@ -27,11 +27,11 @@ public abstract class Customer {
 
     @Override
     public String toString() {
-        return "Costumer{" +
+        return
                 "name='" + name + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", type=" + type +
-                '}';
+                ", type=" + type ;
+
     }
 
     public void setPhoneNumber(String phoneNumber) {
