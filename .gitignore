@@ -1,0 +1,60 @@
+# Ignore any files related to IntelliJ IDEA
+/.idea/
+/*.iml
+
+# Ignore compiled Java classes
+/out/
+/target/
+/bin/
+
+# Ignore Maven or Gradle build directories
+/build/
+/*.jar
+/*.war
+/*.ear
+
+# Ignore log files
+*.log
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore any temporary files
+*.tmp
+*.swp
+*.swo
+*.bak
+
+# Ignore generated files
+*.class
+*.jar
+*.war
+*.ear
+
+# Ignore IDE-specific files
+*.iws
+*.ipr
+*.iml
+
+# Ignore test reports
+/test-output/
+/surefire-reports/
+/test-reports/
+
+# Ignore dependency directories
+/.mvn/
+/node_modules/
+/vendor/
+
+# Ignore configuration files
+*.env
+*.properties
+*.yaml
+
+# Ignore IntelliJ IDEA's workspace file
+.idea/workspace.xml
+.idea/libraries/
+
+# Ignore Maven wrapper files
+/.mvn/wrapper/maven-wrapper.jar
