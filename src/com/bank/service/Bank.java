@@ -7,12 +7,12 @@ import com.bank.model.RealCostumer;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Bank {
+public class Bank implements AutoCloseable{
 
     private ArrayList<Costumer> costumers = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
 
-    public void run(){
+    public void run() {
         int choice;
         do {
             printMenu();
@@ -20,7 +20,7 @@ public class Bank {
             choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
-                case 0 :
+                case 0:
                     System.out.println("Exit . . .");
                     break;
                 case 1:
@@ -38,11 +38,10 @@ public class Bank {
                 default:
                     System.out.println("Invalid choice");
             }
-        }while (choice != 0);
-        scanner.close();
+        } while (choice != 0);
     }
 
-    public void printMenu(){
+    private void printMenu() {
         System.out.println("0 - Exit");
         System.out.println("1 - Add new costumer");
         System.out.println("2 - Print all costumers");
@@ -50,7 +49,7 @@ public class Bank {
         System.out.println("4 - Search and print costumer by family");
     }
 
-    private void addNewCostumer(){
+    private void addNewCostumer() {
         System.out.println("***********************");
         System.out.println("1 - Real Costumer");
         System.out.println("2 - Legal Costumer");
@@ -67,7 +66,7 @@ public class Bank {
             RealCostumer realCostumer = new RealCostumer(name, phone);
             realCostumer.setFamily(family);
             costumers.add(realCostumer);
-        }else if (choice == 2){
+        } else if (choice == 2) {
             System.out.println("Enter costumer name:");
             String name = scanner.nextLine();
             System.out.println("Enter costumer phone number:");
@@ -77,18 +76,23 @@ public class Bank {
             LegalCostumer legalCostumer = new LegalCostumer(name, phone);
             legalCostumer.setFax(fax);
             costumers.add(legalCostumer);
-        }else {
+        } else {
             System.out.println("Invalid choice . . . ");
         }
     }
 
-    private void printCostumers(){
+    private void printCostumers() {
         if (costumers.isEmpty()) {
             System.out.println("No costumers found");
-        }else {
+        } else {
             for (Costumer costumer : costumers) {
                 System.out.println(costumer);
             }
         }
+    }
+
+    @Override
+    public void close()  {
+        scanner.close();
     }
 }
