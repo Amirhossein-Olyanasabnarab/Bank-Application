@@ -13,9 +13,9 @@ public class Bank {
     private Scanner scanner = new Scanner(System.in);
 
     public void run(){
-        printMenu();
         int choice;
         do {
+            printMenu();
             System.out.println("Enter your choice:");
             choice = scanner.nextInt();
             scanner.nextLine();
@@ -27,7 +27,7 @@ public class Bank {
                     addNewCostumer();
                     break;
                 case 2:
-                    System.out.println("Print all costumers");
+                    printCostumers();
                     break;
                 case 3:
                     System.out.println("Search and print costumers by name");
@@ -39,6 +39,7 @@ public class Bank {
                     System.out.println("Invalid choice");
             }
         }while (choice != 0);
+        scanner.close();
     }
 
     public void printMenu(){
@@ -78,6 +79,16 @@ public class Bank {
             costumers.add(legalCostumer);
         }else {
             System.out.println("Invalid choice . . . ");
+        }
+    }
+
+    private void printCostumers(){
+        if (costumers.isEmpty()) {
+            System.out.println("No costumers found");
+        }else {
+            for (Costumer costumer : costumers) {
+                System.out.println(costumer);
+            }
         }
     }
 }
