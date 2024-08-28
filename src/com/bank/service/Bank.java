@@ -7,7 +7,7 @@ import com.bank.model.RealCustomer;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Bank implements AutoCloseable{
+public class Bank implements AutoCloseable {
 
     private ArrayList<Customer> customers = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
@@ -35,10 +35,39 @@ public class Bank implements AutoCloseable{
                 case 4:
                     searchAndPrintCustomersByFamily();
                     break;
+                case 5:
+                    searchAndEditCustomerByName();
+                    break;
                 default:
                     System.out.println("Invalid choice");
             }
         } while (choice != 0);
+    }
+
+    private void searchAndEditCustomerByName() {
+        System.out.println("Enter your customer name:");
+        String name = scanner.nextLine();
+        for (Customer customer : customers) {
+            if (customer.getName().equalsIgnoreCase(name)) {
+                System.out.println(customer);
+                System.out.println("Enter your new customer name:");
+                String newName = scanner.nextLine();
+                System.out.println("Enter your new customer phone number:");
+                String phone = scanner.nextLine();
+                customer.setName(newName);
+                customer.setPhoneNumber(phone);
+                if (customer instanceof RealCustomer realCustomer){
+                    System.out.println("Enter your new customer family:");
+                    String family = scanner.nextLine();
+                    realCustomer.setFamily(family);
+                }else if (customer instanceof LegalCustomer legalCustomer){
+                    System.out.println("Enter your new customer fax:");
+                    String fax = scanner.nextLine();
+                    legalCustomer.setFax(fax);
+                }
+
+            }
+        }
     }
 
     private void printMenu() {
@@ -47,6 +76,7 @@ public class Bank implements AutoCloseable{
         System.out.println("2 - Print all customer");
         System.out.println("3 - Search and print customer by name");
         System.out.println("4 - Search and print customer by family");
+        System.out.println("4 - Search and edit customer by name");
     }
 
     private void addNewCustomer() {
@@ -94,33 +124,34 @@ public class Bank implements AutoCloseable{
     private void searchAndPrintCustomersByName() {
         System.out.println("Please enter name for searching by customer name");
         String name = scanner.nextLine();
-        if(customers.isEmpty()){
+        if (customers.isEmpty()) {
             System.out.println("No customer found");
-        }else {
+        } else {
             for (Customer customer : customers) {
-                if(customer.getName().equalsIgnoreCase(name)){
+                if (customer.getName().equalsIgnoreCase(name)) {
                     System.out.println(customer);
                 }
             }
         }
     }
 
-    private void searchAndPrintCustomersByFamily(){
+    private void searchAndPrintCustomersByFamily() {
         System.out.println("Please enter family name for searching by customer family");
         String family = scanner.nextLine();
-        if(customers.isEmpty()){
+        if (customers.isEmpty()) {
             System.out.println("No customer found");
-        }else {
-            for(Customer customer : customers){
-                if(customer instanceof RealCustomer realCustomer ){
-                    if(realCustomer.getFamily().equalsIgnoreCase(family))
+        } else {
+            for (Customer customer : customers) {
+                if (customer instanceof RealCustomer realCustomer) {
+                    if (realCustomer.getFamily().equalsIgnoreCase(family))
                         System.out.println(customer);
                 }
             }
         }
     }
+
     @Override
-    public void close()  {
+    public void close() {
         scanner.close();
     }
 }
