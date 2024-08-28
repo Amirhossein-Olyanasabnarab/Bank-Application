@@ -1,7 +1,10 @@
 package com.bank;
 
+import com.bank.service.Bank;
+
 public class ApplicationRunner {
     public static void main(String[] args) {
-        System.out.println("Welcome to the Bank application");
+        Bank bank = new Bank();
+        bank.run();
     }
 }
