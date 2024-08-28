@@ -15,4 +15,12 @@ public class LegalCustomer extends Customer {
     public void setFax(String fax) {
         this.fax = fax;
     }
+
+    @Override
+    public String toString() {
+        return "LegalCustomer{" +
+                super.toString() +
+                " fax='" + fax + '\'' +
+                '}';
+    }
 }
