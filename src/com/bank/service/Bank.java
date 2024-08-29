@@ -53,11 +53,11 @@ public class Bank implements AutoCloseable {
         String name = scanner.nextLine();
         List<Customer> customerToDelete = new ArrayList<>();
         for (Customer customer : customers) {
-            if(customer.getName().equalsIgnoreCase(name)){
+            if (customer.getName().equalsIgnoreCase(name)) {
                 customerToDelete.add(customer);
             }
         }
-        if(!customerToDelete.isEmpty()){
+        if (!customerToDelete.isEmpty()) {
             customers.removeAll(customerToDelete);
         }
     }
@@ -141,17 +141,24 @@ public class Bank implements AutoCloseable {
     }
 
     private void searchAndPrintCustomersByName() {
+
         System.out.println("Please enter name for searching by customer name");
         String name = scanner.nextLine();
-        if (customers.isEmpty()) {
-            System.out.println("No customer found");
-        } else {
-            for (Customer customer : customers) {
-                if (customer.getName().equalsIgnoreCase(name)) {
-                    System.out.println(customer);
-                }
-            }
-        }
+        //Lambda
+        customers.stream()
+                .filter(customer -> customer.getName().equalsIgnoreCase(name))
+                .forEach(System.out::println);
+
+
+//        if (customers.isEmpty()) {
+//            System.out.println("No customer found");
+//        } else {
+//            for (Customer customer : customers) {
+//                if (customer.getName().equalsIgnoreCase(name)) {
+//                    System.out.println(customer);
+//                }
+//            }
+//        }
     }
 
     private void searchAndPrintCustomersByFamily() {
