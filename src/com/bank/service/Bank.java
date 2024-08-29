@@ -51,15 +51,19 @@ public class Bank implements AutoCloseable {
     private void searchAndDeleteCustomerByName() {
         System.out.println("Enter your customer name:");
         String name = scanner.nextLine();
-        List<Customer> customerToDelete = new ArrayList<>();
-        for (Customer customer : customers) {
-            if (customer.getName().equalsIgnoreCase(name)) {
-                customerToDelete.add(customer);
-            }
-        }
-        if (!customerToDelete.isEmpty()) {
-            customers.removeAll(customerToDelete);
-        }
+
+        //Lambda
+
+        customers.removeIf(customer -> customer.getName().equalsIgnoreCase(name));
+//        List<Customer> customerToDelete = new ArrayList<>();
+//        for (Customer customer : customers) {
+//            if (customer.getName().equalsIgnoreCase(name)) {
+//                customerToDelete.add(customer);
+//            }
+//        }
+//        if (!customerToDelete.isEmpty()) {
+//            customers.removeAll(customerToDelete);
+//        }
     }
 
     private void searchAndEditCustomerByName() {
