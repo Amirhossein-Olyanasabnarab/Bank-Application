@@ -164,16 +164,24 @@ public class Bank implements AutoCloseable {
     private void searchAndPrintCustomersByFamily() {
         System.out.println("Please enter family name for searching by customer family");
         String family = scanner.nextLine();
-        if (customers.isEmpty()) {
-            System.out.println("No customer found");
-        } else {
-            for (Customer customer : customers) {
-                if (customer instanceof RealCustomer realCustomer) {
-                    if (realCustomer.getFamily().equalsIgnoreCase(family))
-                        System.out.println(customer);
-                }
-            }
-        }
+
+        //Lambda
+        customers.stream()
+                .filter(customer -> customer instanceof RealCustomer)
+                .map(customer -> (RealCustomer) customer)
+                .filter(RealCustomer -> RealCustomer.getFamily().equalsIgnoreCase(family))
+                .forEach(System.out::println);
+
+//        if (customers.isEmpty()) {
+//            System.out.println("No customer found");
+//        } else {
+//            for (Customer customer : customers) {
+//                if (customer instanceof RealCustomer realCustomer) {
+//                    if (realCustomer.getFamily().equalsIgnoreCase(family))
+//                        System.out.println(customer);
+//                }
+//            }
+//        }
     }
 
     @Override
