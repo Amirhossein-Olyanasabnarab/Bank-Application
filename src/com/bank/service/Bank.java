@@ -5,7 +5,6 @@ import com.bank.model.LegalCustomer;
 import com.bank.model.RealCustomer;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Bank implements AutoCloseable {
@@ -51,19 +50,7 @@ public class Bank implements AutoCloseable {
     private void searchAndDeleteCustomerByName() {
         System.out.println("Enter your customer name:");
         String name = scanner.nextLine();
-
-        //Lambda
-
         customers.removeIf(customer -> customer.getName().equalsIgnoreCase(name));
-//        List<Customer> customerToDelete = new ArrayList<>();
-//        for (Customer customer : customers) {
-//            if (customer.getName().equalsIgnoreCase(name)) {
-//                customerToDelete.add(customer);
-//            }
-//        }
-//        if (!customerToDelete.isEmpty()) {
-//            customers.removeAll(customerToDelete);
-//        }
     }
 
     private void searchAndEditCustomerByName() {
@@ -148,44 +135,19 @@ public class Bank implements AutoCloseable {
 
         System.out.println("Please enter name for searching by customer name");
         String name = scanner.nextLine();
-        //Lambda
         customers.stream()
                 .filter(customer -> customer.getName().equalsIgnoreCase(name))
                 .forEach(System.out::println);
-
-
-//        if (customers.isEmpty()) {
-//            System.out.println("No customer found");
-//        } else {
-//            for (Customer customer : customers) {
-//                if (customer.getName().equalsIgnoreCase(name)) {
-//                    System.out.println(customer);
-//                }
-//            }
-//        }
     }
 
     private void searchAndPrintCustomersByFamily() {
         System.out.println("Please enter family name for searching by customer family");
         String family = scanner.nextLine();
-
-        //Lambda
         customers.stream()
                 .filter(customer -> customer instanceof RealCustomer)
                 .map(customer -> (RealCustomer) customer)
                 .filter(RealCustomer -> RealCustomer.getFamily().equalsIgnoreCase(family))
                 .forEach(System.out::println);
-
-//        if (customers.isEmpty()) {
-//            System.out.println("No customer found");
-//        } else {
-//            for (Customer customer : customers) {
-//                if (customer instanceof RealCustomer realCustomer) {
-//                    if (realCustomer.getFamily().equalsIgnoreCase(family))
-//                        System.out.println(customer);
-//                }
-//            }
-//        }
     }
 
     @Override
