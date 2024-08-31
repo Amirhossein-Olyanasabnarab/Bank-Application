@@ -7,7 +7,7 @@ import com.bank.model.RealCustomer;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Bank implements AutoCloseable {
+public class CustomerService implements AutoCloseable {
 
     private ArrayList<Customer> customers = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
