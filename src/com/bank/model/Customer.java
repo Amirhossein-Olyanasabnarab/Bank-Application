@@ -2,16 +2,26 @@ package com.bank.model;
 
 import com.bank.enums.CustomerType;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public abstract class Customer {
+    private static final AtomicInteger ID_COUNTER = new AtomicInteger(1);
+    private Integer id;
     private String name;
     private String phoneNumber;
     private CustomerType type;
 
     public Customer(String name, String phoneNumber, CustomerType type) {
+        this.id = ID_COUNTER.getAndIncrement();
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.type = type;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
 
     public String getName() {
         return name;
@@ -28,7 +38,8 @@ public abstract class Customer {
     @Override
     public String toString() {
         return
-                "name='" + name + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", type=" + type ;
 
