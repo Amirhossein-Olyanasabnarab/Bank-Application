@@ -10,8 +10,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleUI implements AutoCloseable {
-    private Scanner scanner = new Scanner(System.in);
-    private CustomerService customerService = CustomerService.getInstance();
+    private final Scanner scanner ;
+    private final CustomerService customerService ;
+
+    public ConsoleUI() {
+        scanner = new Scanner(System.in);
+        customerService = CustomerService.getInstance();
+    }
 
     public void startMenu() {
         int choice;
