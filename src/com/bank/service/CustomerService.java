@@ -10,9 +10,17 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class CustomerService {
-
+    private static final CustomerService INSTANCE;
+    public static CustomerService getInstance() {
+        return INSTANCE;
+    }
+    static {
+        INSTANCE = new CustomerService();
+    }
     private ArrayList<Customer> customers = new ArrayList<>();
 
+    private CustomerService() {
+    }
 
     public void searchAndDeleteCustomerByName(String name) {
         customers.removeIf(customer -> customer.getName().equalsIgnoreCase(name));
