@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class ConsoleUI implements AutoCloseable {
     private Scanner scanner = new Scanner(System.in);
-    private CustomerService customerService = new CustomerService();
+    private CustomerService customerService = CustomerService.getInstance();
 
     public void startMenu() {
         int choice;
