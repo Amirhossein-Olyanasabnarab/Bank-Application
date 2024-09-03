@@ -53,4 +53,10 @@ public class CustomerService {
                 .filter(RealCustomer -> RealCustomer.getFamily().equalsIgnoreCase(family))
                 .collect(Collectors.toList());
     }
+
+    public List<Customer> getDeletedCustomers() {
+        return customers.stream()
+                .filter(customer -> customer.getDeleted())
+                .collect(Collectors.toList());
+    }
 }

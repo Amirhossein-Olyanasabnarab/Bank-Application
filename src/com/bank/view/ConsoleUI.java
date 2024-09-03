@@ -46,10 +46,23 @@ public class ConsoleUI implements AutoCloseable {
                 case 6:
                     searchAndDeleteCustomerByName();
                     break;
+                case 7:
+                    printAllDeleteCustomers();
                 default:
                     System.out.println("Invalid choice");
             }
         } while (choice != 0);
+    }
+
+    private void printAllDeleteCustomers() {
+        List<Customer> customers = customerService.getDeletedCustomers();
+        if (customers.isEmpty()) {
+            System.out.println("No customers deleted");
+        }else {
+            for (Customer customer : customers) {
+                System.out.println(customer);
+            }
+        }
     }
 
     private void printMenu() {
@@ -60,6 +73,7 @@ public class ConsoleUI implements AutoCloseable {
         System.out.println("4 - Search and print customers by family");
         System.out.println("5 - Search and edit customer by name");
         System.out.println("6 - Search and delete customers by name");
+        System.out.println("7 - Print all deleted customers");
     }
 
     private void addCustomer() {
