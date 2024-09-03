@@ -5,7 +5,6 @@ import com.bank.model.LegalCustomer;
 import com.bank.model.RealCustomer;
 import com.bank.service.CustomerService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -96,7 +95,7 @@ public class ConsoleUI implements AutoCloseable {
     }
 
     private void printAllCustomers() {
-        List<Customer> allCustomers = customerService.getAllCustomers();
+        List<Customer> allCustomers = customerService.getActiveCustomers();
         if (allCustomers.isEmpty()) {
             System.out.println("No customer found");
         } else {
