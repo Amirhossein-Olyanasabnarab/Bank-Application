@@ -44,7 +44,7 @@ public class ConsoleUI implements AutoCloseable {
                     searchAndEditCustomerByName();
                     break;
                 case 6:
-                    searchAndDeleteCustomerByName();
+                    DeleteCustomerById();
                     break;
                 case 7:
                     printAllDeleteCustomers();
@@ -72,7 +72,7 @@ public class ConsoleUI implements AutoCloseable {
         System.out.println("3 - Search and print customers by name");
         System.out.println("4 - Search and print customers by family");
         System.out.println("5 - Search and edit customer by name");
-        System.out.println("6 - Search and delete customers by name");
+        System.out.println("6 - Delete customer by id");
         System.out.println("7 - Print all deleted customers");
     }
 
@@ -158,10 +158,10 @@ public class ConsoleUI implements AutoCloseable {
         }
     }
 
-    private void searchAndDeleteCustomerByName() {
-        System.out.println("Enter your customer name:");
-        String name = scanner.nextLine();
-        customerService.searchAndDeleteCustomerByName(name);
+    private void DeleteCustomerById() {
+        System.out.println("Enter your customer id:");
+        String id = scanner.nextLine();
+        customerService.deleteCustomerById(Integer.valueOf(id));
     }
 
 

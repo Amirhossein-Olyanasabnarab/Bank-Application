@@ -21,9 +21,9 @@ public class CustomerService {
     private CustomerService() {
     }
 
-    public void searchAndDeleteCustomerByName(String name) {
+    public void deleteCustomerById(Integer id) {
           customers.stream()
-                  .filter(customer -> customer.getName().equalsIgnoreCase(name))
+                  .filter(customer -> customer.getId().equals(id))
                   .forEach(customer -> customer.setDeleted(true));
     }
 
