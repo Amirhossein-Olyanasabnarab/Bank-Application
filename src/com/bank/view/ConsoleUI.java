@@ -38,7 +38,7 @@ public class ConsoleUI implements AutoCloseable {
                     searchAndPrintCustomersByName();
                     break;
                 case 4:
-                    searchAndPrintCustomersByFamily();
+                    editCustomerById();
                     break;
                 case 5:
                     searchAndEditCustomerByName();
@@ -70,7 +70,7 @@ public class ConsoleUI implements AutoCloseable {
         System.out.println("1 - Add new customer");
         System.out.println("2 - Print all customers");
         System.out.println("3 - Search and print customers by name");
-        System.out.println("4 - Search and print customers by family");
+        System.out.println("4 - Edit customers by id");
         System.out.println("5 - Search and edit customer by name");
         System.out.println("6 - Delete customer by id");
         System.out.println("7 - Print all deleted customers");
@@ -127,11 +127,26 @@ public class ConsoleUI implements AutoCloseable {
         customers.forEach(System.out::println);
     }
 
-    private void searchAndPrintCustomersByFamily() {
-        System.out.println("Please enter family name for searching by customer family");
-        String family = scanner.nextLine();
-        List<Customer> customers = customerService.searchCustomersByFamily(family);
-        customers.forEach(System.out::println);
+    private void editCustomerById() {
+        System.out.println("Please enter id for editing by customer id");
+        String id = scanner.nextLine();
+        Customer customer = customerService.getCustomerById(Integer.valueOf(id));
+        System.out.println(customer);
+        System.out.println("Enter new customer name:");
+        String name = scanner.nextLine();
+        System.out.println("Enter new customer phone number:");
+        String phone = scanner.nextLine();
+        customer.setName(name);
+        customer.setPhoneNumber(phone);
+        if(customer instanceof RealCustomer realCustomer){
+            System.out.println("Enter new customer family:");
+            String family = scanner.nextLine();
+            realCustomer.setFamily(family);
+        } else if(customer instanceof LegalCustomer legalCustomer) {
+            System.out.println("Enter new customer fax:");
+            String fax = scanner.nextLine();
+            legalCustomer.setFax(fax);
+        }
     }
 
     private void searchAndEditCustomerByName() {
