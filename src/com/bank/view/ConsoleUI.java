@@ -122,21 +122,15 @@ public class ConsoleUI implements AutoCloseable {
         String id = scanner.nextLine();
         Customer customer = customerService.getCustomerById(Integer.valueOf(id));
         System.out.println(customer);
-        System.out.println("Enter new customer name:");
-        String name = scanner.nextLine();
-        System.out.println("Enter new customer phone number:");
-        String phone = scanner.nextLine();
-        customer.setName(name);
-        customer.setPhoneNumber(phone);
+
+        AbstractCustomerUI customerUI = null ;
+
         if(customer instanceof RealCustomer realCustomer){
-            System.out.println("Enter new customer family:");
-            String family = scanner.nextLine();
-            realCustomer.setFamily(family);
+            customerUI = new RealCustomerUI(scanner);
         } else if(customer instanceof LegalCustomer legalCustomer) {
-            System.out.println("Enter new customer fax:");
-            String fax = scanner.nextLine();
-            legalCustomer.setFax(fax);
+           customerUI = new LegalCustomerUI(scanner);
         }
+        customerUI.editCustomer(customer);
     }
 
     private void searchAndEditCustomerByName() {
