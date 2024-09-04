@@ -9,7 +9,7 @@ public abstract class Customer {
     private Integer id;
     private String name;
     private String phoneNumber;
-    private CustomerType type;
+    private final CustomerType type;
     private Boolean deleted;
 
     public Customer(String name, String phoneNumber, CustomerType type) {
