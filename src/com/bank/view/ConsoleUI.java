@@ -4,6 +4,9 @@ import com.bank.model.Customer;
 import com.bank.model.LegalCustomer;
 import com.bank.model.RealCustomer;
 import com.bank.service.CustomerService;
+import com.bank.view.component.AbstractCustomerUI;
+import com.bank.view.component.LegalCustomerUI;
+import com.bank.view.component.RealCustomerUI;
 
 import java.util.List;
 import java.util.Scanner;
@@ -83,29 +86,16 @@ public class ConsoleUI implements AutoCloseable {
         System.out.println("Please choose a customer type:");
         int choice = scanner.nextInt();
         scanner.nextLine();
+        AbstractCustomerUI customerUI = null ;
         if (choice == 1) {
-            System.out.println("Enter customer name:");
-            String name = scanner.nextLine();
-            System.out.println("Enter customer family:");
-            String family = scanner.nextLine();
-            System.out.println("Enter customer phone number:");
-            String phone = scanner.nextLine();
-            RealCustomer realCustomer = new RealCustomer(name, phone);
-            realCustomer.setFamily(family);
-            customerService.addCustomer(realCustomer);
+            customerUI = new RealCustomerUI(scanner);
         } else if (choice == 2) {
-            System.out.println("Enter customer name:");
-            String name = scanner.nextLine();
-            System.out.println("Enter customer phone number:");
-            String phone = scanner.nextLine();
-            System.out.println("Enter customer fax:");
-            String fax = scanner.nextLine();
-            LegalCustomer legalCustomer = new LegalCustomer(name, phone);
-            legalCustomer.setFax(fax);
-            customerService.addCustomer(legalCustomer);
+           customerUI = new LegalCustomerUI(scanner);
         } else {
             System.out.println("Invalid choice . . . ");
         }
+        Customer customer = customerUI.generateCustomer();
+        customerService.addCustomer(customer);
     }
 
     private void printAllCustomers() {

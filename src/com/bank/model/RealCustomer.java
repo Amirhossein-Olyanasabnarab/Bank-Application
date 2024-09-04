@@ -19,7 +19,7 @@ public class RealCustomer extends Customer {
 
     @Override
     public String toString() {
-        return "{" +
+        return "RealCustomer{" +
                 super.toString() +
                 " family='" + family + '\'' +
                 '}';
