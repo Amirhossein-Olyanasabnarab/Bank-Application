@@ -2,7 +2,7 @@ package com.app;
 
 import java.util.Scanner;
 
-public class ApplicationRunner {
+public class PhoneBook {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int choice;
