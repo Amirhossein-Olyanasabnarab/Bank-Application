@@ -26,7 +26,7 @@ public class PhoneBook {
                     break;
             }
         }while (choice != 0);
-
+    scanner.close();
     }
 
     private static void printMenu(){
