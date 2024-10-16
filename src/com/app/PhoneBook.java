@@ -16,13 +16,13 @@ public class PhoneBook {
                     System.out.println("Exit ... !!!");
                     break;
                 case 1:
-                    System.out.println("Add new phonebook");
+                    System.out.println("Add new phonebook \n");
                     break;
                 case 2:
-                    System.out.println("Show all phonebooks");
+                    System.out.println("Show all phonebooks \n");
                     break;
                 default:
-                    System.out.println("Invalid choice");
+                    System.out.println("Invalid choice \n");
                     break;
             }
         }while (choice != 0);
@@ -32,6 +32,6 @@ public class PhoneBook {
     private static void printMenu(){
         System.out.println("0 - Exit");
         System.out.println("1 - Add new phonebook");
-        System.out.println("2 - Show all phonebooks");
+        System.out.println("2 - Show all phonebooks \n");
     }
 }
