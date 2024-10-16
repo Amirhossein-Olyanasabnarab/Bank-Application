@@ -2,7 +2,7 @@ package com.app.model;
 
 import com.app.enums.ContactType;
 
-public class Personal  extends Contact{
+public class PersonalContact extends Contact{
     private String family;
 
     public String getFamily() {
@@ -13,12 +13,12 @@ public class Personal  extends Contact{
         this.family = family;
     }
 
-    public Personal(String family) {
+    public PersonalContact(String family) {
         this.family = family;
     }
 
-    public Personal(String name, String phone,  String family) {
+    public PersonalContact(String name, String phone) {
         super(name, phone, ContactType.PERSONAL);
-        this.family = family;
+
     }
 }

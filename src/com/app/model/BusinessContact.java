@@ -17,8 +17,8 @@ public class BusinessContact extends Contact{
         this.email = email;
     }
 
-    public BusinessContact(String name, String phone,  String email) {
+    public BusinessContact(String name, String phone) {
         super(name, phone, ContactType.BUSINESS);
-        this.email = email;
+
     }
 }
