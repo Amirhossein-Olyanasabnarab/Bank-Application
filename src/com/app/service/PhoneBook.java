@@ -27,7 +27,7 @@ public class PhoneBook {
                     addNewContact(scanner);
                     break;
                 case 2:
-                    System.out.println("Show all phonebooks \n");
+                   showAllContacts();
                     break;
                 default:
                     System.out.println("Invalid choice \n");
@@ -35,6 +35,16 @@ public class PhoneBook {
             }
         }while (choice != 0);
     scanner.close();
+    }
+
+    private void showAllContacts() {
+        if (!contacts.isEmpty() || contacts.size() > 0) {
+            for (Contact contact : contacts) {
+                System.out.println(contact);
+            }
+        }else {
+            System.out.println("No contacts found");
+        }
     }
 
     private void addNewContact(Scanner scanner) {
