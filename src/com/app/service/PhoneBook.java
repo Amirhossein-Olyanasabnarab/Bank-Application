@@ -24,7 +24,7 @@ public class PhoneBook {
                     System.out.println("Exit . . . ! ! !");
                     break;
                 case 1:
-                    addNewContact();
+                    addNewContact(scanner);
                     break;
                 case 2:
                     System.out.println("Show all phonebooks \n");
@@ -53,6 +53,7 @@ public class PhoneBook {
            PersonalContact personalContact = new PersonalContact(name, phoneNumber);
            personalContact.setFamily(family);
             contacts.add(personalContact);
+           System.out.println("Contact added successfully");
        }else if (choice == 2) {
            System.out.println("Enter contact name: ");
            String name = scanner.nextLine();
@@ -63,6 +64,7 @@ public class PhoneBook {
            BusinessContact businessContact = new BusinessContact(name, phoneNumber);
            businessContact.setEmail(email);
            contacts.add(businessContact);
+           System.out.println("Contact added successfully");
        }
     }
 
