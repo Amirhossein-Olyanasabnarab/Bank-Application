@@ -19,6 +19,12 @@ public class PersonalContact extends Contact{
 
     public PersonalContact(String name, String phone) {
         super(name, phone, ContactType.PERSONAL);
+    }
 
+    @Override
+    public String toString() {
+        return
+                super.toString() +
+                "family='" + family + '\'';
     }
 }

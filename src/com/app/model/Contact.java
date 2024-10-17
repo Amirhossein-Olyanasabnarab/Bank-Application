@@ -29,7 +29,7 @@ public abstract class Contact {
     }
 
     public void setName(String name) {
-        this.name = capitalizeFirstLetter(name);
+        this.name = name;
     }
 
     public ContactType getContactType() {
@@ -43,9 +43,5 @@ public abstract class Contact {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-    private String capitalizeFirstLetter(String str) {
-        if(str != null && !str.isEmpty()){
-            return Character.toUpperCase(str.charAt(0)) + str.substring(1);
-        }
-        return str;    }
+
 }

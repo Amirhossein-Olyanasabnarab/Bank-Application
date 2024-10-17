@@ -69,10 +69,10 @@ public class PhoneBook {
            String name = scanner.nextLine();
            System.out.println("Enter contact phone number:");
            String phoneNumber = scanner.nextLine();
-           System.out.println("Enter contact email: ");
-           String email = scanner.nextLine();
+           System.out.println("Enter contact fax: ");
+           String fax = scanner.nextLine();
            BusinessContact businessContact = new BusinessContact(name, phoneNumber);
-           businessContact.setEmail(email);
+           businessContact.setFax(fax);
            contacts.add(businessContact);
            System.out.println("Contact added successfully");
        }
